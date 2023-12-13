@@ -1,0 +1,26 @@
+name: Build image and push
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag my-demo-image:${{ github.sha }}
+
+    - name: Tag image with Registry
+      run: docker tag my-demo-image:${{ github.sha }} my-registry/my-demo-image:${{ github.sha }}
+
+    - name: Push to Registry
+      run: echo "docker push my-registry/my-demo-image:${{ github.sha }}"
