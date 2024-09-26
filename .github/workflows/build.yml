@@ -24,3 +24,6 @@ jobs:
 
     - name: Push to Registry
       run: echo "docker push my-registry/my-demo-image:${{ github.sha }}"
+      
+    - name: Aqua container Scanner-cli
+      run: echo "docker run -v /var/run/docker.sock:/var/run/docker.sock registry.aquasec.com/scanner:latest-saas scan -H https://eb4d20eaed.cloud.aquasec.com -A df476d76ebd7b946b642493021919bd323dc8f0f901054a07a7809269503dbe0  --local my-demo-image:latest"
