@@ -2,9 +2,9 @@ name: Build image and push
 
 on:
   push:
-    branches: [ "main","dart1","dart2" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "main","dart1","dart2" ]
+    branches: [ "main" ]
 
 
 jobs:
